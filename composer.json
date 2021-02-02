@@ -1,0 +1,11 @@
+{
+    "name": "shabansky/warehouse",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Services\\" : "src/services",
+            "Warehouse\\" : "src/warehouse",
+            "Organizers\\" : "src/organizers"
+        }
+    }
+}
