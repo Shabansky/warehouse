@@ -1,4 +1,5 @@
 <?php
+namespace Warehouse;
 
 class Product
 {
@@ -22,11 +23,11 @@ class Product
     }
 
     public function setWidth(float $width) :void{
-        $this->width;
+        $this->width = $width;
     }
 
     public function setHeight(float $height) :void{
-        $this->height;
+        $this->height = $height;
     }
 
     public function getModel() :string{
