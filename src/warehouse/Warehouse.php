@@ -3,6 +3,7 @@
 namespace Warehouse;
 
 use Organizers\OrganizerResult;
+use Services\MetricConverter;
 
 class Warehouse
 {
@@ -20,7 +21,20 @@ class Warehouse
     }
 
     public function setDimensions(OrganizerResult $result){
-        $this->setHeight($result->getHeight());
-        $this->setHeight($result->getHeight());
+        $this->setLength($result->getLength());
+        $this->setWidth($result->getWidth());
+    }
+
+    public function printWarehouseInfo() :void{
+        echo sprintf(
+            "Warehouse Info:\n
+Length : %g m
+Width : %g m
+Height : %g m\n"
+            ,
+            MetricConverter::MillimeterToMeter($this->getLength()),
+            MetricConverter::MillimeterToMeter($this->getWidth()),
+            MetricConverter::MillimeterToMeter($this->getHeight())
+        );
     }
 }
