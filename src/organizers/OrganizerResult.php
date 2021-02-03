@@ -2,8 +2,13 @@
 
 namespace Organizers;
 
+use Warehouse\VolumetricStructureGettable;
+
 class OrganizerResult
 {
+
+    use VolumetricStructureGettable;
+
     private float $length;
     private float $width;
     private float $height;
@@ -14,15 +19,4 @@ class OrganizerResult
         $this->height = $height;
     }
 
-    public function getLength() : float{
-        return $this->length;
-    }
-
-    public function getWidth() : float{
-        return $this->width;
-    }
-
-    public function getHeight() : float{
-        return $this->height;
-    }
 }
