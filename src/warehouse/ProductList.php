@@ -4,7 +4,6 @@ namespace Warehouse;
 use PDO;
 use ArrayIterator;
 use \Services\Connection;
-use Services\MetricConverter;
 
 class ProductList
 {

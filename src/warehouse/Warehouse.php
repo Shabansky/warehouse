@@ -3,7 +3,6 @@
 namespace Warehouse;
 
 use Organizers\CalculatorResult;
-use Services\MetricConverter;
 
 class Warehouse
 {
