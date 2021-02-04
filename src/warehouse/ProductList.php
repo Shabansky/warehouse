@@ -4,6 +4,7 @@ namespace Warehouse;
 use PDO;
 use ArrayIterator;
 use \Services\Connection;
+use Services\MetricConverter;
 
 class ProductList
 {
@@ -46,11 +47,24 @@ class ProductList
         return $this->getList()->current();
     }
 
-    public function sortByDimension(string $dimension): ProductList
+    public function filterByMaxHeightMeters(float $height) :void
     {
+        while($this->products->valid()){
+            $product = $this->products->current();
+            if($product->hasSideLessThan(MetricConverter::MeterToMillimeter($height))){
+                $this->products->offsetUnset($this->products->key());
+                continue;
+            }
+            $this->products->next();
+        }
+    }
+
+    public function sortByDimension(callable $dimension): ProductList
+    {
+        //TODO: Replace $dimension with a callable to replace the anonymous function below.
         $this->products->uasort(function(Product $a,Product $b){
-            $pa = $a->getWidth();
-            $pb = $b->getWidth();
+            $pa = $a->$dimension();
+            $pb = $b->$dimension();
             if($pa === $pb) {
                 return 0;
             }
