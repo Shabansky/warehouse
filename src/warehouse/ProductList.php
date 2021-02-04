@@ -47,11 +47,11 @@ class ProductList
         return $this->getList()->current();
     }
 
-    public function filterByMaxHeightMeters(float $height) :void
+    public function filterByMaxHeight(float $height) :void
     {
         while($this->products->valid()){
             $product = $this->products->current();
-            if($product->hasSideLessThan(MetricConverter::MeterToMillimeter($height))){
+            if(!$product->hasSideLessThan($height)){
                 $this->products->offsetUnset($this->products->key());
                 continue;
             }

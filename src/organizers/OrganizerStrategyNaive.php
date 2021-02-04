@@ -12,8 +12,9 @@ class OrganizerStrategyNaive extends OrganizerStrategy
         foreach($this->productList->getList()->getArrayCopy() as $product){
             $areaTotal += $this->calculateProductArea($product);
         }
+        $areaTotal *= $this->warehouse->getProductsMax();
         $side = sqrt($areaTotal);
-        return new OrganizerResult($side,$side,0);
+        return new OrganizerResult($side,$side,$this->warehouse->getHeight());
     }
 
     private function calculateProductArea(Product $product) : float {

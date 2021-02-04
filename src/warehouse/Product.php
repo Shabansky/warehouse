@@ -36,9 +36,8 @@ class Product
      */
     public function hasSideLessThan(float $length) :bool
     {
-
         return (bool) count(array_filter([$this->getLength(),$this->getWidth(),$this->getHeight()],
-            static function($d) use ($length) {return $d < $length;}));
+            static function($side) use ($length) {return $side < $length;}));
     }
 
     public function rotateToFace() :void
