@@ -33,18 +33,5 @@ class Warehouse
         return $this->productsMax;
     }
 
-    public function printWarehouseInfo() :void{
-        echo sprintf(
-            "Warehouse Info:\n
-Max number of copies per model : %d
-Length : %g m
-Width : %g m
-Height : %g m\n"
-            ,
-            $this->getProductsMax(),
-            MetricConverter::MillimeterToMeter($this->getLength()),
-            MetricConverter::MillimeterToMeter($this->getWidth()),
-            MetricConverter::MillimeterToMeter($this->getHeight())
-        );
-    }
+
 }
