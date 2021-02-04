@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/config.php';
 
 use Organizers\DimensionsCalculator;
 use Organizers\CalculatorStrategyNaive;
@@ -8,14 +9,14 @@ use Services\MetricConverter;
 use Warehouse\ProductList;
 use Warehouse\Warehouse;
 
-$conn = new Connection('mysql:dbname=julia;host=127.0.0.1','root','');
+$conn = new Connection($config['conn']['dsn'], $config['conn']['user'], $config['conn']['pass']);
 
 $productList = new ProductList($conn);
 $productList->getFromSource();
 
 $warehouse = new Warehouse();
-$warehouse->setHeight(MetricConverter::MeterToMillimeter(3.6));
-$warehouse->setProductsMax(5);
+$warehouse->setHeight(MetricConverter::MeterToMillimeter($config['calculator']['warehouse_ceil']));
+$warehouse->setProductsMax($config['calculator']['max_num_of_product']);
 
 $calculator = new DimensionsCalculator($warehouse, $productList);
 $calculator->setCalculationStrategy(new CalculatorStrategyNaive());

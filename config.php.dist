@@ -1,0 +1,13 @@
+<?php
+
+return $config = [
+    'conn' => [
+        'dsn' => 'mysql:dbname=dbname;host=hostname',
+        'user' => 'user',
+        'pass' => 'pass'
+    ],
+    'calculator' => [
+        'warehouse_ceil' => 3.6,
+        'max_num_of_product' => 5
+    ]
+];
