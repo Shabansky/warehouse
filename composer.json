@@ -1,0 +1,13 @@
+{
+    "name": "shabansky/warehouse",
+    "require": {
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Services\\" : "src/services",
+            "Warehouse\\" : "src/warehouse",
+            "Organizers\\" : "src/organizers"
+        }
+    }
+}
