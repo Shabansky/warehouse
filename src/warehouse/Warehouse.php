@@ -2,6 +2,7 @@
 
 namespace Warehouse;
 
+use \InvalidArgumentException;
 use Organizers\CalculatorResult;
 
 class Warehouse
@@ -25,6 +26,9 @@ class Warehouse
 
     public function setProductsMax(int $max) :void
     {
+        if($max <= 0 && is_int($max)){
+            throw new InvalidArgumentException('Product max number must be a positive number.');
+        }
         $this->productsMax = $max;
     }
 

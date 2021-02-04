@@ -9,16 +9,21 @@ use Services\MetricConverter;
 use Warehouse\ProductList;
 use Warehouse\Warehouse;
 
-$conn = new Connection($config['conn']['dsn'], $config['conn']['user'], $config['conn']['pass']);
 
-$productList = new ProductList($conn);
-$productList->getFromSource();
+try{
+    $conn = new Connection($config['conn']['dsn'], $config['conn']['user'], $config['conn']['pass']);
 
-$warehouse = new Warehouse();
-$warehouse->setHeight(MetricConverter::MeterToMillimeter($config['calculator']['warehouse_ceil']));
-$warehouse->setProductsMax($config['calculator']['max_num_of_product']);
+    $productList = new ProductList($conn);
+    $productList->getFromSource();
 
-$calculator = new DimensionsCalculator($warehouse, $productList);
-$calculator->setCalculationStrategy(new CalculatorStrategyNaive());
-$calculator->execCalculationStrategy();
-$calculator->printInfo();
+    $warehouse = new Warehouse();
+    $warehouse->setHeight(MetricConverter::MeterToMillimeter($config['calculator']['warehouse_ceil']));
+    $warehouse->setProductsMax($config['calculator']['max_num_of_product']);
+
+    $calculator = new DimensionsCalculator($warehouse, $productList);
+    $calculator->setCalculationStrategy(new CalculatorStrategyNaive());
+    $calculator->execCalculationStrategy();
+    $calculator->printInfo();
+}catch(InvalidArgumentException | PDOException $e){
+    echo $e->getMessage() . "\n";
+}
