@@ -4,7 +4,7 @@ namespace Organizers;
 
 use Warehouse\VolumetricStructureGettable;
 
-class OrganizerResult
+class CalculatorResult
 {
 
     use VolumetricStructureGettable;

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Organizers\DimensionsCalculator;
-use Organizers\OrganizerStrategyNaive;
+use Organizers\CalculatorStrategyNaive;
 use Services\Connection;
 use Services\MetricConverter;
 use Warehouse\ProductList;
@@ -17,7 +17,7 @@ $warehouse->setHeight(MetricConverter::MeterToMillimeter(8));
 $warehouse->setProductsMax(5);
 
 $calculator = new DimensionsCalculator($warehouse, $productList);
-$calculator->setCalculationStrategy(new OrganizerStrategyNaive());
+$calculator->setCalculationStrategy(new CalculatorStrategyNaive());
 
 $warehouse->setDimensions($calculator->execCalculationStrategy());
 $warehouse->printWarehouseInfo();

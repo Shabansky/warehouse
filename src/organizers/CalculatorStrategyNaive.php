@@ -4,9 +4,9 @@ namespace Organizers;
 
 use Warehouse\Product;
 
-class OrganizerStrategyNaive extends OrganizerStrategy
+class CalculatorStrategyNaive extends CalculatorStrategy
 {
-    public function calculate(): OrganizerResult
+    public function calculate(): CalculatorResult
     {
         $this->filterProducts();
         $areaTotal = 0;
@@ -15,7 +15,7 @@ class OrganizerStrategyNaive extends OrganizerStrategy
         }
         $areaTotal *= $this->warehouse->getProductsMax();
         $side = sqrt($areaTotal);
-        return new OrganizerResult($side,$side,$this->warehouse->getHeight());
+        return new CalculatorResult($side, $side, $this->warehouse->getHeight());
     }
 
     private function calculateProductArea(Product $product) : float {

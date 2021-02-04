@@ -7,7 +7,7 @@ use Warehouse\Warehouse;
 
 class DimensionsCalculator
 {
-    private OrganizerStrategy $strategy;
+    private CalculatorStrategy $strategy;
     private Warehouse $warehouse;
     private ProductList $productsList;
 
@@ -16,14 +16,14 @@ class DimensionsCalculator
         $this->productsList = $productList;
     }
 
-    public function setCalculationStrategy(OrganizerStrategy $strategy) :void
+    public function setCalculationStrategy(CalculatorStrategy $strategy) :void
     {
         $this->strategy = $strategy;
         $this->strategy->setProductList($this->productsList);
         $this->strategy->setWarehouse($this->warehouse);
     }
 
-    public function execCalculationStrategy() :OrganizerResult{
+    public function execCalculationStrategy() :CalculatorResult{
         return $this->strategy->calculate();
     }
 }

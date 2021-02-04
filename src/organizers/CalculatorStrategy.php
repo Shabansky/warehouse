@@ -5,7 +5,7 @@ namespace Organizers;
 use Warehouse\Warehouse;
 use Warehouse\ProductList;
 
-abstract class OrganizerStrategy
+abstract class CalculatorStrategy
 {
 
     protected ProductList $productList;
@@ -19,5 +19,5 @@ abstract class OrganizerStrategy
         $this->productList = $productList;
     }
 
-    abstract public function calculate() : OrganizerResult;
+    abstract public function calculate() : CalculatorResult;
 }

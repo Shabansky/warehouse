@@ -2,7 +2,7 @@
 
 namespace Warehouse;
 
-use Organizers\OrganizerResult;
+use Organizers\CalculatorResult;
 use Services\MetricConverter;
 
 class Warehouse
@@ -17,7 +17,7 @@ class Warehouse
     private int $productsMax;
 
 
-    public function setDimensions(OrganizerResult $result) :void
+    public function setDimensions(CalculatorResult $result) :void
     {
         $this->setLength($result->getLength());
         $this->setWidth($result->getWidth());
